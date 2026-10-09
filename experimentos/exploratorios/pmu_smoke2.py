@@ -1,3 +1,8 @@
+import sys
+from pathlib import Path
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
+
 import numpy as np
 import pandas as pd
 import matplotlib
@@ -5,7 +10,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from ff_safe import FourierFlowSafe
 
-df = pd.read_csv("PMU_AlexyDonald2.csv")
+df = pd.read_csv(str(ROOT / "data" / "PMU_AlexyDonald2.csv"))
 df.columns = df.columns.str.strip()
 
 # 1) ¿Qué hay en las etiquetas y qué pasa en la ventana rara (muestras 2000-2333)?
@@ -42,4 +47,4 @@ ax[1].legend(); ax[1].set_title("Una de cada (no son pares)")
 ax[2].semilogy(np.abs(np.fft.rfft(real, axis=1)).mean(0), label="Real")
 ax[2].semilogy(np.abs(np.fft.rfft(synth, axis=1)).mean(0), label="Sintético")
 ax[2].legend(); ax[2].set_title("Espectro medio |FFT|")
-plt.savefig("pmu_smoke2.png", dpi=120)
+plt.savefig(str(ROOT / "results" / "pmu_smoke2.png"), dpi=120)

@@ -1,3 +1,8 @@
+import sys
+from pathlib import Path
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
+
 import numpy as np
 import pandas as pd
 import matplotlib
@@ -5,7 +10,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 from ff_safe import FourierFlowSafe
 
-df = pd.read_csv("PMU_AlexyDonald2.csv")
+df = pd.read_csv(str(ROOT / "data" / "PMU_AlexyDonald2.csv"))
 df.columns = df.columns.str.strip()
 lab = df["Etiqueta"].values
 CANAL, FS = "BUS10Va", 20000
@@ -61,5 +66,5 @@ ax[1].legend(); ax[1].set_title("Una de cada (no son pares)")
 ax[2].semilogy(np.abs(np.fft.rfft(real, axis=1)).mean(0), label="Real")
 ax[2].semilogy(np.abs(np.fft.rfft(synth, axis=1)).mean(0), label="Sintético")
 ax[2].legend(); ax[2].set_title("Espectro medio |FFT|")
-plt.savefig("pmu_nominal.png", dpi=120)
+plt.savefig(str(ROOT / "results" / "pmu_nominal.png"), dpi=120)
 print("Guardado pmu_nominal.png")

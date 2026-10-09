@@ -1,3 +1,8 @@
+import sys
+from pathlib import Path
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
+
 import numpy as np
 import pandas as pd
 import matplotlib
@@ -5,7 +10,7 @@ matplotlib.use("Agg")  # WSL sin pantalla: guardamos a PNG
 import matplotlib.pyplot as plt
 from ff_safe import FourierFlowSafe
 
-CSV = "PMU_AlexyDonald2.csv"   
+CSV = str(ROOT / "data" / "PMU_AlexyDonald2.csv")   
 CANAL = "BUS10Va"
 WIN = 333      # impar (ver nota abajo); ~1 ciclo a 60 Hz si fs = 20 kHz
 STRIDE = 10    # paso entre ventanas (menos solapamiento, menos memoria)
@@ -45,5 +50,5 @@ ax[0].set_title("Reales"); ax[1].set_title("Sintéticas")
 ax[2].semilogy(np.abs(np.fft.rfft(real, axis=1)).mean(0), label="Real")
 ax[2].semilogy(np.abs(np.fft.rfft(synth, axis=1)).mean(0), label="Sintético")
 ax[2].set_title("Espectro medio |FFT|"); ax[2].legend()
-plt.savefig("pmu_smoke.png", dpi=120)
+plt.savefig(str(ROOT / "results" / "pmu_smoke.png"), dpi=120)
 print("Guardado pmu_smoke.png")
