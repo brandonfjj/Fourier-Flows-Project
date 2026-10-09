@@ -116,3 +116,8 @@ results/**
 .pylintrc
 .vscode
 pyproject.toml
+PMU_AlexyDonald2.csv*
+*Zone.Identifier
+*.npz
+__pycache__/
+*.pyc
