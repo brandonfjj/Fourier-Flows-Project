@@ -121,3 +121,7 @@ PMU_AlexyDonald2.csv*
 *.npz
 __pycache__/
 *.pyc
+
+# Proyecto PMU: datos, resultados y archivos locales (los datos son confidenciales)
+*.csv
+*.png

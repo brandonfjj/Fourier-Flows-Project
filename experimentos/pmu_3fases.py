@@ -42,7 +42,7 @@ for c in CANALES:
     real[c] = np.array(X) * (xmax - xmin) + xmin
     synth[c] = S * (xmax - xmin) + xmin
 
-np.savez(str(ROOT / "results" / "pmu_3fases_out.npz"),
+np.savez(str(ROOT / "results" / "exploratorios" / "04_tres_fases" / "pmu_3fases_out.npz"),
          **{"real_" + c: real[c] for c in CANALES},
          **{"synth_" + c: synth[c] for c in CANALES})
 
@@ -81,5 +81,5 @@ for k, otra in enumerate(["BUS10Vb", "BUS10Vc"]):
 for c in CANALES:
     ax[2].plot(synth[c][0], label=c)
 ax[2].set_title("Una muestra sintética (3 canales)"); ax[2].legend()
-plt.tight_layout(); plt.savefig(str(ROOT / "results" / "pmu_3fases.png"), dpi=120)
+plt.tight_layout(); plt.savefig(str(ROOT / "results" / "exploratorios" / "04_tres_fases" / "pmu_3fases.png"), dpi=120)
 print("Guardado pmu_3fases.png")

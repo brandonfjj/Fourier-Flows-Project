@@ -47,7 +47,7 @@ S = model.sample(len(X))
 real = np.array(X) * (xmax - xmin) + xmin
 synth = S * (xmax - xmin) + xmin
 
-np.savez(str(ROOT / "results" / "pmu_nominal2_out.npz"), real=real, synth=synth)
+np.savez(str(ROOT / "results" / "exploratorios" / "02_nominal_401" / "pmu_nominal2_out.npz"), real=real, synth=synth)
 
 # 3) Métricas numéricas
 def rms(w): return np.sqrt((w ** 2).mean(1))
@@ -71,5 +71,5 @@ for k in range(5):
 ax[0, 1].set_title("5 ventanas reales"); ax[1, 0].set_title("5 sintéticas")
 ax[1, 1].semilogy(mr, label="Real"); ax[1, 1].semilogy(ms, label="Sintético")
 ax[1, 1].legend(); ax[1, 1].set_title("Espectro medio |FFT|")
-plt.tight_layout(); plt.savefig(str(ROOT / "results" / "pmu_nominal2.png"), dpi=120)
+plt.tight_layout(); plt.savefig(str(ROOT / "results" / "exploratorios" / "02_nominal_401" / "pmu_nominal2.png"), dpi=120)
 print("Guardado pmu_nominal2.png")
