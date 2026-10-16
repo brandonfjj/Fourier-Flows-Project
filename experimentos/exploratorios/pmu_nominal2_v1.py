@@ -67,5 +67,5 @@ for k in range(5):
 ax[0, 1].set_title("5 ventanas reales"); ax[1, 0].set_title("5 sintéticas")
 ax[1, 1].semilogy(mr, label="Real"); ax[1, 1].semilogy(ms, label="Sintético")
 ax[1, 1].legend(); ax[1, 1].set_title("Espectro medio |FFT|")
-plt.tight_layout(); plt.savefig(str(ROOT / "results" / "pmu_nominal2_v1.png"), dpi=120)
+plt.tight_layout(); plt.savefig(str(ROOT / "results" / "exploratorios" / "02_nominal_401" / "pmu_nominal2_v1.png"), dpi=120)
 print("Guardado pmu_nominal2.png")

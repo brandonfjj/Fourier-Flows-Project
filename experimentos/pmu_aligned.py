@@ -41,7 +41,7 @@ S = model.sample(len(X))
 
 real = np.array(X) * (xmax - xmin) + xmin
 synth = S * (xmax - xmin) + xmin
-np.savez(str(ROOT / "results" / "pmu_aligned_out.npz"), real=real, synth=synth)
+np.savez(str(ROOT / "results" / "exploratorios" / "03_alineado_fase" / "pmu_aligned_out.npz"), real=real, synth=synth)
 
 def rms(w): return np.sqrt((w ** 2).mean(1))
 fr = np.fft.rfft(real, axis=1)[:, 1]
@@ -65,5 +65,5 @@ ax[1].legend(); ax[1].set_title("Amplitud de la fundamental")
 for k in range(5):
     ax[2].plot(synth[k], alpha=0.7)
 ax[2].set_title("5 sintéticas")
-plt.tight_layout(); plt.savefig(str(ROOT / "results" / "pmu_aligned.png"), dpi=120)
+plt.tight_layout(); plt.savefig(str(ROOT / "results" / "exploratorios" / "03_alineado_fase" / "pmu_aligned.png"), dpi=120)
 print("Guardado pmu_aligned.png")
